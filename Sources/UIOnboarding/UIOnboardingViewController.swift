@@ -203,7 +203,7 @@ private extension UIOnboardingViewController {
         continueButton.delegate = self
         bottomOverlayView.addSubview(continueButton)
         
-        continueButtonBottom = continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: traitCollection.horizontalSizeClass == .regular ? -60 : -40)
+        continueButtonBottom = continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: traitCollection.horizontalSizeClass == .regular ? -60 : -20)
         continueButtonBottom.isActive = true
         
         continueButtonWidth = continueButton.widthAnchor.constraint(equalToConstant: traitCollection.horizontalSizeClass == .regular ? 340 : view.frame.width - (UIScreenType.setUpPadding() * 2))
