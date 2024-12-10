@@ -85,6 +85,8 @@ final class UIOnboardingCell: UITableViewCell {
         
         labelStack = .init(frame: .zero)
         labelStack.axis = .vertical
+        labelStack.alignemnt = .leading
+        labelStack.distribution = .fill
         labelStack.addArrangedSubview(titleLabel)
         labelStack.addArrangedSubview(descriptionLabel)
         labelStack.setCustomSpacing(configuration.spacing, after: titleLabel)
@@ -114,9 +116,11 @@ final class UIOnboardingCell: UITableViewCell {
         featureGlyph.tintColor = feature.iconTint
                 
         titleLabel.text = feature.title
+        titleLabel.textAlignment = .left
         titleLabel.accessibilityLabel = feature.title
         
         descriptionLabel.text = feature.description
+        descriptionLabel.textAlignment = .left
         descriptionLabel.accessibilityLabel = feature.description
     }
     
