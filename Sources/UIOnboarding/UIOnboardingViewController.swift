@@ -217,7 +217,7 @@ private extension UIOnboardingViewController {
     
     func setUpOnboardingTextView() {
         guard let textViewConfiguration: UIOnboardingTextViewConfiguration = configuration.textViewConfiguration else {
-            continueButton.topAnchor.constraint(equalTo: bottomOverlayView.topAnchor, constant: 32).isActive = true
+            continueButton.topAnchor.constraint(equalTo: bottomOverlayView.topAnchor, constant: 16).isActive = true
             return
         }
         
@@ -228,25 +228,25 @@ private extension UIOnboardingViewController {
             onboardingNoticeIcon.translatesAutoresizingMaskIntoConstraints = false
             
             bottomOverlayView.addSubview(onboardingNoticeIcon)
-            onboardingNoticeIcon.topAnchor.constraint(equalTo: bottomOverlayView.topAnchor, constant: 16).isActive = true
+            onboardingNoticeIcon.topAnchor.constraint(equalTo: bottomOverlayView.topAnchor, constant: 8).isActive = true
             onboardingNoticeIcon.centerXAnchor.constraint(equalTo: bottomOverlayView.centerXAnchor).isActive = true
-            onboardingNoticeIcon.heightAnchor.constraint(equalToConstant: 16).isActive = true
-            onboardingNoticeIcon.widthAnchor.constraint(equalToConstant: 16).isActive = true
+            onboardingNoticeIcon.heightAnchor.constraint(equalToConstant: 8).isActive = true
+            onboardingNoticeIcon.widthAnchor.constraint(equalToConstant: 8).isActive = true
         }
         
         onboardingTextView = .init(withConfiguration: textViewConfiguration)
         bottomOverlayView.addSubview(onboardingTextView!)
             
-        onboardingTextView!.bottomAnchor.constraint(equalTo: continueButton.topAnchor).isActive = true
+        onboardingTextView!.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -8).isActive = true
         // Adjust constraints based on device type
-            if traitCollection.userInterfaceIdiom == .phone {
-                onboardingTextView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-                onboardingTextView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 16).isActive = true
-            } else {
-                onboardingTextView!.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor).isActive = true
-                onboardingTextView!.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor).isActive = true
-            }
-        onboardingTextView!.topAnchor.constraint(equalTo: onboardingNoticeIcon != nil ? onboardingNoticeIcon.bottomAnchor : bottomOverlayView.topAnchor, constant: onboardingNoticeIcon != nil ? 16 : 32).isActive = true
+        if traitCollection.userInterfaceIdiom == .phone {
+            onboardingTextView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            onboardingTextView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        } else {
+            onboardingTextView!.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor).isActive = true
+            onboardingTextView!.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor).isActive = true
+        }
+        onboardingTextView!.topAnchor.constraint(equalTo: onboardingNoticeIcon != nil ? onboardingNoticeIcon.bottomAnchor : bottomOverlayView.topAnchor, constant: onboardingNoticeIcon != nil ? 8 : 16).isActive = true
     }
     
     func startOnboardingAnimation(completion: (() -> Void)?) {
