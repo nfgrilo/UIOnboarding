@@ -203,7 +203,7 @@ private extension UIOnboardingViewController {
         continueButton.delegate = self
         bottomOverlayView.addSubview(continueButton)
         
-        continueButtonBottom = continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: traitCollection.horizontalSizeClass == .regular ? -60 : -20)
+        continueButtonBottom = continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: traitCollection.horizontalSizeClass == .regular ? -60 : -10)
         continueButtonBottom.isActive = true
         
         continueButtonWidth = continueButton.widthAnchor.constraint(equalToConstant: traitCollection.horizontalSizeClass == .regular ? 340 : view.frame.width - (UIScreenType.setUpPadding() * 2))
@@ -239,13 +239,13 @@ private extension UIOnboardingViewController {
             
         onboardingTextView!.bottomAnchor.constraint(equalTo: continueButton.topAnchor).isActive = true
         // Adjust constraints based on device type
-            if traitCollection.userInterfaceIdiom == .phone {
-                onboardingTextView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-                onboardingTextView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 16).isActive = true
-            } else {
-                onboardingTextView!.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor).isActive = true
-                onboardingTextView!.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor).isActive = true
-            }
+        if traitCollection.userInterfaceIdiom == .phone {
+            onboardingTextView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            onboardingTextView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        } else {
+            onboardingTextView!.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor).isActive = true
+            onboardingTextView!.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor).isActive = true
+        }
         onboardingTextView!.topAnchor.constraint(equalTo: onboardingNoticeIcon != nil ? onboardingNoticeIcon.bottomAnchor : bottomOverlayView.topAnchor, constant: onboardingNoticeIcon != nil ? 16 : 32).isActive = true
     }
     
@@ -280,7 +280,7 @@ private extension UIOnboardingViewController {
                     
         onboardingStackViewWidth.constant = traitCollection.horizontalSizeClass == .regular ? 480 : (traitCollection.horizontalSizeClass == .compact && view.frame.width == 320 ? view.frame.width - 60 : (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639 ? 340 : view.frame.width - (UIScreenType.setUpPadding() * 2)))
         
-        continueButtonBottom.constant = traitCollection.horizontalSizeClass == .regular || (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639) ? -60 : -20
+        continueButtonBottom.constant = traitCollection.horizontalSizeClass == .regular || (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639) ? -60 : -10
         
         continueButtonWidth.constant = traitCollection.horizontalSizeClass == .regular ? 340 : (traitCollection.horizontalSizeClass == .compact && view.frame.width == 320 ? view.frame.width - 60 : (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639 ? 300 : view.frame.width - (UIScreenType.setUpPadding() * 2)))
                 
