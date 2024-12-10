@@ -51,6 +51,22 @@ final class UIOnboardingCell: UITableViewCell {
         return label
     }()
     
+    private lazy var descriptionLabelContainer: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(descriptionLabel)
+        
+        // Add padding
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            descriptionLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 2.0),
+            descriptionLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: container.topAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+        ])
+        return container
+    }()
+    
     private var labelStack: UIStackView!
     var configuration: UIOnboardingFeatureStyle = .init()
                 
@@ -85,8 +101,9 @@ final class UIOnboardingCell: UITableViewCell {
         
         labelStack = .init(frame: .zero)
         labelStack.axis = .vertical
+        labelStack.alignment = .leading
         labelStack.addArrangedSubview(titleLabel)
-        labelStack.addArrangedSubview(descriptionLabel)
+        labelStack.addArrangedSubview(descriptionLabelContainer) // Use container instead of descriptionLabel
         labelStack.setCustomSpacing(configuration.spacing, after: titleLabel)
         labelStack.translatesAutoresizingMaskIntoConstraints = false
 
