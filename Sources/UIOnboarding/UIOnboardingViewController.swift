@@ -238,8 +238,14 @@ private extension UIOnboardingViewController {
         bottomOverlayView.addSubview(onboardingTextView!)
             
         onboardingTextView!.bottomAnchor.constraint(equalTo: continueButton.topAnchor).isActive = true
-        onboardingTextView!.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor).isActive = true
-        onboardingTextView!.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor).isActive = true
+        // Adjust constraints based on device type
+            if traitCollection.userInterfaceIdiom == .phone {
+                onboardingTextView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+                onboardingTextView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 16).isActive = true
+            } else {
+                onboardingTextView!.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor).isActive = true
+                onboardingTextView!.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor).isActive = true
+            }
         onboardingTextView!.topAnchor.constraint(equalTo: onboardingNoticeIcon != nil ? onboardingNoticeIcon.bottomAnchor : bottomOverlayView.topAnchor, constant: onboardingNoticeIcon != nil ? 16 : 32).isActive = true
     }
     
