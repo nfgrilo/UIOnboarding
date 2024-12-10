@@ -85,6 +85,7 @@ final class UIOnboardingCell: UITableViewCell {
         
         labelStack = .init(frame: .zero)
         labelStack.axis = .vertical
+        labelStack.alignment = .leading
         labelStack.addArrangedSubview(titleLabel)
         labelStack.addArrangedSubview(descriptionLabel)
         labelStack.setCustomSpacing(configuration.spacing, after: titleLabel)
