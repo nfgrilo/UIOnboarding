@@ -203,7 +203,7 @@ private extension UIOnboardingViewController {
         continueButton.delegate = self
         bottomOverlayView.addSubview(continueButton)
         
-        continueButtonBottom = continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: traitCollection.horizontalSizeClass == .regular ? -60 : -40)
+        continueButtonBottom = continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: traitCollection.horizontalSizeClass == .regular ? -60 : -20)
         continueButtonBottom.isActive = true
         
         continueButtonWidth = continueButton.widthAnchor.constraint(equalToConstant: traitCollection.horizontalSizeClass == .regular ? 340 : view.frame.width - (UIScreenType.setUpPadding() * 2))
@@ -280,7 +280,7 @@ private extension UIOnboardingViewController {
                     
         onboardingStackViewWidth.constant = traitCollection.horizontalSizeClass == .regular ? 480 : (traitCollection.horizontalSizeClass == .compact && view.frame.width == 320 ? view.frame.width - 60 : (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639 ? 340 : view.frame.width - (UIScreenType.setUpPadding() * 2)))
         
-        continueButtonBottom.constant = traitCollection.horizontalSizeClass == .regular || (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639) ? -60 : -40
+        continueButtonBottom.constant = traitCollection.horizontalSizeClass == .regular || (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639) ? -60 : -20
         
         continueButtonWidth.constant = traitCollection.horizontalSizeClass == .regular ? 340 : (traitCollection.horizontalSizeClass == .compact && view.frame.width == 320 ? view.frame.width - 60 : (isiPadPro && traitCollection.horizontalSizeClass == .compact && view.frame.width == 639 ? 300 : view.frame.width - (UIScreenType.setUpPadding() * 2)))
                 
