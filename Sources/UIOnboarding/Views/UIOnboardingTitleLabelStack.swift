@@ -19,6 +19,7 @@ final class UIOnboardingTitleLabelStack: UIStackView {
         
         super.init(frame: .zero)
         axis = .vertical
+        alignment = .leading
         
         addArrangedSubview(firstTitleLineLabel)
         addArrangedSubview(secondTitleLineLabel)
